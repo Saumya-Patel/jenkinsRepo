@@ -10,6 +10,14 @@ pipeline {
         //         sh 'mvn clean install -U'
         //     }
         // }
+        stage('Build') {
+            steps {
+                script {
+                   bat 'cd DevOps && mvn clean install -DskipTests'
+                  // bat 'cd DevOps && mvn package' 
+                }
+            }
+        }
         stage('Test') {
             steps {
                 // Run tests
