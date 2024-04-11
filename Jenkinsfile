@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                   bat 'cd DevOps && mvn clean install -DskipTests'
+                   bat 'mvn clean package'
                   // bat 'cd DevOps && mvn package' 
                 }
             }
