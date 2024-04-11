@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    tools {
+        maven "maven_home"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                // Clean and build the Maven project
+                bat 'mvn clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run tests
+                bat 'mvn test'
+            }
+        }
+        
+        stage('Clean Up') {
+            steps {
+                // Clean up any temporary files or resources
+                bat 'mvn clean'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
