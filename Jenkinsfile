@@ -4,12 +4,12 @@ pipeline {
         maven "maven_home"
     }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         echo 'Building the Maven project...'
-        //         sh 'mvn clean package'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                echo 'Building the Maven project...'
+                sh 'mvn clean package'
+            }
+        }
 
         stage('Test') {
             steps {
