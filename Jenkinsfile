@@ -6,22 +6,34 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    bat 'mvn clean package'
-                }
+                echo 'Building the Maven project...'
+                sh 'mvn clean package'
             }
         }
+
         stage('Test') {
             steps {
-                bat 'mvn test'
+                echo 'Running tests...'
+                sh 'mvn test'
             }
         }
-        stage('Clean Up') {
+
+        stage('Clean') {
             steps {
-                bat 'mvn clean'
+                echo 'Cleaning up...'
+                sh 'mvn clean'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the artifact...'
+                // Example: Deploying to a Maven repository
+                sh 'mvn deploy'
             }
         }
     }
+
     post {
         success {
             echo 'Pipeline executed successfully!'
