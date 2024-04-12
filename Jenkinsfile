@@ -26,12 +26,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                echo 'Deploying the artifact...'
-                // Example: Deploying to a Maven repository
-                sh 'mvn deploy'
-            }
-        }
+    steps {
+        echo 'Deploying the artifact...'
+        bat 'start mvn deploy'
+    }
+}
     }
 
     post {
