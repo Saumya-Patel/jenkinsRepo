@@ -4,12 +4,12 @@ pipeline {
         maven "maven_home"
     }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         // Clean and build the Maven project
-        //         sh 'mvn clean install -U'
-        //     }
-        // }
+         stage('Build') {
+             steps {
+                 // Clean and build the Maven project
+                 sh 'mvn clean install -U'
+             }
+         }
         stage('Build') {
             steps {
                 script {
